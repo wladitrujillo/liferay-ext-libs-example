@@ -1,0 +1,4 @@
+Bundle-Name: mainstreet-ext-js-libs
+Bundle-SymbolicName: mainstreet-ext-js-libs
+Bundle-Version: 1.0.0
+Web-ContextPath: /mainstreet-ext-js-libs

@@ -6,33 +6,7 @@
 <div class="wf-view" ng-cloack>
 	<div id="account-portlet">
 		<div class="demo-section k-content" ng-controller="MyCtrl">
-			<ul id="fieldlist">
-				<li>
-					<label>Phone number:</label>
-					<input kendo-masked-text-box ng-model="phone" k-mask="'(999) 000-0000'" />
-					<div class="value">Value: {{phone}}</div>
-				</li>
-				<li>
-					<label>Credit Card number:</label>
-					<input kendo-masked-text-box ng-model="cc" k-mask="'0000 0000 0000 0000'" />
-					<div class="value">Value: {{cc}}</div>
-				</li>
-				<li>
-					<label>Social security number:</label>
-					<input kendo-masked-text-box ng-model="ssn" k-mask="'000-00-0000'" />
-					<div class="value">Value: {{ssn}}</div>
-				</li>
-				<li>
-					<label>UK postcode:</label>
-					<input kendo-masked-text-box ng-model="post" k-mask="'L0L 0LL'" />
-					<div class="value">Value: {{post}}</div>
-				</li>
-				<li>
-					<label>Fecha</label>
-					<input kendo-datepicker k-ng-model="birthday" ng-model="birthday" />
-					<div class="value">Value: {{birthday}}</div>
-				</li>
-			</ul>
+			<div ng-include="'/o/kendo-test-portlet-res41/template.html'"></div>
 		</div>
 		<style>
 			#fieldlist {
@@ -67,6 +41,29 @@
 </div>
 
 
-<script src="/o/kendo-test-portlet-res41/main.js?date=01/01/2019"></script>
+<script type="text/javascript">
+	Liferay.Loader.require([ "mainstreet-ext-js-libs@1.0.0/angular/angular", "mainstreet-ext-js-libs@1.0.0/kendo/kendo.all"], function ( angular, kendo) {
+
+	
+
+			var app = angular.module("mainstreet-accounts-form", ["kendo.directives"]);
+
+
+
+			app.controller("MyCtrl", ["$scope", function ($scope) {
+				$scope.birthday = new Date();
+				$scope.phone = "555 123 4567";
+				$scope.cc = "1234 1234 1234 1234"
+				$scope.ssn = "003-12-3456";
+				$scope.post = "W1N 1AC";
+			}]);
+
+			angular.bootstrap(document.getElementById("account-portlet"), ["mainstreet-accounts-form"]);
+	
+
+	}, function (error) {
+		console.error(error);
+	});
+</script>
 
 <input type="hidden" value="07-05-2019-v1" />
